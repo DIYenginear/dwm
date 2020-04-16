@@ -27,7 +27,17 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 //	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       0,       0,           -1 },
+};
+
+#define NUMCOLORS         4
+static const char colors[NUMCOLORS][MAXCOLORS][8] = {
+	// border   foreground background
+	{ "#000033", "#dddddd", "#000033" },  // normal
+	{ "#000088", "#ffffff", "#000088" },  // selected
+	{ "#ff0000", "#000000", "#ffff00" },  // urgent/warning  (black on yellow)
+	{ "#ff0000", "#ffffff", "#ff0000" },  // error (white on red)
+	// add more here
 };
 
 /* layout(s) */
@@ -37,8 +47,8 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[T]",      tile },    /* first entry is default */
+	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
