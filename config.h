@@ -39,13 +39,13 @@ static const char colors[NUMCOLORS][MAXCOLORS][8] = {
 	// border   foreground background
 	{ "#000033", "#dddddd", "#000033" },  // normal
 	{ "#000088", "#ffffff", "#000088" },  // selected
-	{ "#ff0000", "#000000", "#ffff00" },  // urgent/warning  (black on yellow)
+	{ "#ff0000", "#000000", "#00ff00" },  // urgent/warning  (black on green)
 	{ "#ff0000", "#ffffff", "#ff0000" },  // error (white on red)
 	// add more here
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.62; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
@@ -70,12 +70,14 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "xterm", NULL };
+static const char *termcmd[]  = { "xfce4-terminal", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
+static const char *capscmd[]  = { "capslock.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ False,                        XK_Caps_Lock, spawn,       {.v = capscmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
