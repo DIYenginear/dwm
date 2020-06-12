@@ -10,4 +10,6 @@ dwmblocks &
 synclient MaxTapTime=0 &
 blueman-applet &
 pnmixer &
+indicator-sound-switcher
 redshift-gtk &
+squeezelite &
